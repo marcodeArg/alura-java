@@ -1,0 +1,14 @@
+package javaPrimerosPasos;
+
+public class tipoVariables 
+{
+	public static void main(String[] args) 
+	{
+		int edad = 21;
+		System.out.println(edad);
+		
+		edad = 18;
+		System.out.println(edad);
+				
+	}
+}

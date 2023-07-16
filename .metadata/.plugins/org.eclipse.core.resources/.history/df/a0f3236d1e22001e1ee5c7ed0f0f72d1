@@ -1,0 +1,14 @@
+package programacionOrientadaObjetos;
+
+public class TestReferencia1 {
+	public static void main(String[] args) {
+		Cliente juan = new Cliente();
+		juan.nombre = "Juan";
+		juan.direccion = "Alo svossdao Blv.";
+		juan.documento = "452894201";
+		juan.telefono = "0929842";
+		
+		Cuenta cuentaJuan = new Cuenta();
+		
+	}
+}

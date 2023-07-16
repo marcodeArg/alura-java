@@ -1,0 +1,12 @@
+package programacionOrientadaObjetos;
+
+public class PruebaMetodos {
+	public static void main(String[] args) {
+		
+		Cuenta cuentaDiego = new Cuenta();
+		cuentaDiego.depositar(150.4);
+		
+		System.out.println("Saldo actual " + cuentaDiego.saldo);
+		
+	}
+}

@@ -1,0 +1,19 @@
+package javaPrimerosPasos;
+
+public class ciclos {
+	public static void main(String[] args) {
+		int contador = 1;
+		
+		while(contador<=10) {
+			System.out.println(contador);
+			contador++;
+		}
+		
+		System.out.println("-----");
+		
+		for (int contadorFor = 1; contadorFor <= 10; contadorFor++) {
+			
+			System.out.println(contadorFor);
+		}
+	}
+}
