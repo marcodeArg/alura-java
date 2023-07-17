@@ -1,8 +1,26 @@
-public class Cliente {
+public class Cliente implements Autenticable {
 	private String nombre;
 	private String documento;
 	private String telefono;
 	private String direccion;
+	
+	private AutenticacionUtil util;
+	
+	public Cliente() {
+		util = new AutenticacionUtil();
+	}
+	
+
+	@Override
+	public void setClave(String clave) {
+		this.util.setClave(clave);
+	}
+
+	@Override
+	public boolean login() {
+		return this.util.login();
+	}
+	
 		
 	public String getNombre() {
 		return nombre;
@@ -28,5 +46,6 @@ public class Cliente {
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
 	}
+	
 	
 }
