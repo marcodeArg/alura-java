@@ -5,7 +5,7 @@ public class TestCuenta {
 		CuentaAhorro ca = new CuentaAhorro(2, 3);
 		
 		cc.depositar(2000);
-		cc.transferir(1000, ca);
+		//cc.transferir(1000, ca);
 		
 		System.out.println("Cuenta Corriente: " + cc.getSaldo());
 		System.out.println("Cuenta Ahorro: " + ca.getSaldo());

@@ -68,7 +68,7 @@ public class Cuenta {
 	}
 	
 	
-	public boolean transferir(double valor, Cuenta cuenta) {
+	public boolean transferir(double valor, Cuenta cuenta) throws SaldoInsuficienteException {
 		if (this.saldo >= valor) {
 			this.retirar(valor);
 			cuenta.depositar(valor);;
@@ -78,16 +78,13 @@ public class Cuenta {
 		}
 	}
 	
-	public boolean retirar(double valor) {
-		if (this.saldo >= valor) 
+	public void retirar(double valor) throws SaldoInsuficienteException {
+		if (this.saldo < valor) 
 		{
-			this.saldo -= valor;
-			return true;
-		} 
-		else 
-		{
-			return false;
+			throw new SaldoInsuficienteException("No tiene saldo suficiente");
 		}
+		
+		this.saldo -= valor;
 	}
 	
 	public void depositar(double valor) {
