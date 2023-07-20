@@ -1,3 +1,6 @@
+package test;
+import modelo.CuentaCorriente;
+import modelo.CuentaAhorro;
 
 public class TestCuenta {
 	public static void main(String[] args) {

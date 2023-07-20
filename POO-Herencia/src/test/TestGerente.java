@@ -1,3 +1,5 @@
+package test;
+import modelo.Gerente;
 
 public class TestGerente {
 	public static void main(String[] args) {

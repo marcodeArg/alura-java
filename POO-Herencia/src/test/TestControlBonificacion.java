@@ -1,7 +1,9 @@
+package test;
+import modelo.*;
 
 public class TestControlBonificacion {
 	public static void main(String[] args) {
-		Funcionario objFunc = new Gerente();
+		modelo.Funcionario objFunc = new modelo.Gerente();
 		objFunc.setName("Pedro");
 		objFunc.setSalary(15000);
 		

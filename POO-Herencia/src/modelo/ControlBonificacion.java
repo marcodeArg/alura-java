@@ -1,3 +1,4 @@
+package modelo;
 
 public class ControlBonificacion {
 	private double suma;

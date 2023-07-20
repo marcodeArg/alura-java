@@ -6,6 +6,7 @@
 // Ademas dentro de la clases abstractas puedo crear metodos abstractos a los cuales no les tengo que colocar nada en el cuerpo 
 // (ni inclusive los corchetes. Esto obliga a que en todas las clases que hereden de la clase con metodo abstracto, tengan que crear
 // el metodo obligatoriamente.
+package modelo;
 
 public abstract class Funcionario {
 	private String name;

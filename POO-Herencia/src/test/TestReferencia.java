@@ -1,3 +1,6 @@
+package test;
+import modelo.Funcionario;
+import modelo.Gerente;
 
 public class TestReferencia {
 	public static void main(String[] args) {

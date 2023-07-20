@@ -1,3 +1,4 @@
+package modelo;
 
 public class CuentaCorriente extends Cuenta{
 

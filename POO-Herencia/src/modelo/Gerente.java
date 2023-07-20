@@ -1,3 +1,4 @@
+package modelo;
 
 public class Gerente extends Funcionario implements Autenticable {
 	

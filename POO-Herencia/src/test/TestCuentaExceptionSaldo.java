@@ -1,3 +1,7 @@
+package test;
+import modelo.CuentaCorriente;
+import modelo.Cuenta;
+import modelo.SaldoInsuficienteException;
 
 public class TestCuentaExceptionSaldo {
 	
