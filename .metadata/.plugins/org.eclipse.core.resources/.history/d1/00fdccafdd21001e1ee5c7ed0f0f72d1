@@ -1,9 +1,0 @@
-package programacionOrientadaObjetos;
-
-public class TestReferencia {
-	Cuenta primeraCuenta = new Cuenta();
-	primeraCuenta.saldo = 1500.56;
-	
-	
-	
-}

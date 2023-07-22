@@ -1,8 +1,0 @@
-package programacionOrientadaObjetos;
-
-public class Cliente {
-	String cliente;
-	String documento;
-	String telefono;
-	String direccion;
-}

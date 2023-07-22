@@ -5,8 +5,9 @@
     <fullyQualifiedTypeName name="CuentaCorriente"/>
     <fullyQualifiedTypeName name="SaldoInsuficienteException"/>
     <fullyQualifiedTypeName name="java.lang.RuntimeException"/>
-    <fullyQualifiedTypeName name="modelo.CuentaAhorro"/>
-    <fullyQualifiedTypeName name="modelo.CuentaCorriente"/>
     <fullyQualifiedTypeName name="modelo.SaldoInsuficienteException"/>
     <fullyQualifiedTypeName name="modelo.Cuenta"/>
+    <fullyQualifiedTypeName name="modelo.CuentaCorriente"/>
+    <fullyQualifiedTypeName name="modelo.CuentaAhorro"/>
+    <fullyQualifiedTypeName name="modelo.GuardaCuentas"/>
 </qualifiedTypeNameHistroy>

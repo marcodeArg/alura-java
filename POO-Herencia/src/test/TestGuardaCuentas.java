@@ -3,5 +3,9 @@ package test;
 import modelo.GuardaCuentas;
 
 public class TestGuardaCuentas {
-	GuardaCuentas gc = new GuardaCuentas();
+	
+	
+	public static void main(String[] args) {
+		GuardaCuentas gc = new GuardaCuentas();
+	}
 }
