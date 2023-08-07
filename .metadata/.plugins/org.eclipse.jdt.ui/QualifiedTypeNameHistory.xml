@@ -8,7 +8,13 @@
     <fullyQualifiedTypeName name="modelo.SaldoInsuficienteException"/>
     <fullyQualifiedTypeName name="modelo.CuentaAhorro"/>
     <fullyQualifiedTypeName name="modelo.GuardaCuentas"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="modelo.Cuenta"/>
     <fullyQualifiedTypeName name="modelo.CuentaCorriente"/>
+    <fullyQualifiedTypeName name="java.sql.Connection"/>
+    <fullyQualifiedTypeName name="java.sql.DriverManager"/>
+    <fullyQualifiedTypeName name="com.alura.jdbc.controller.ControladorCategoria"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="com.alura.jdbc.view.VentanaControlStock"/>
+    <fullyQualifiedTypeName name="javax.swing.JFrame"/>
 </qualifiedTypeNameHistroy>
