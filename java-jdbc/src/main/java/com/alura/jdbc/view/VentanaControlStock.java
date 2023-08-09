@@ -5,6 +5,8 @@ import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import javax.swing.JButton;
@@ -54,6 +56,7 @@ public class VentanaControlStock extends JFrame {
 	        modelo.addColumn("Identificador del Producto");
 	        modelo.addColumn("Nombre del Producto");
 	        modelo.addColumn("Descripción del Producto");
+	        modelo.addColumn("Cantidad del Producto");
 
 	        cargarTabla();
 
@@ -211,18 +214,22 @@ public class VentanaControlStock extends JFrame {
 	    	
 	    	try {
 	    		var productos = this.productoController.listar();
+	    		
+	    		try {
+		            productos.forEach(producto -> modelo.addRow(new Object[] { producto.get("ID"), producto.get("Nombre"), producto.get("Descripcion"), producto.get("Cantidad")}));
+		            
+		        } catch (Exception e) {
+		            throw e;
+		        }
+	    		
+	    		
+	    		
 			} catch (SQLException e) {
 				throw new RuntimeException(e);
 			}
 	        
 
-	        try {
-	            // TODO
-	            // productos.forEach(producto -> modelo.addRow(new Object[] { "id", "nombre",
-	            // "descripcion" }));
-	        } catch (Exception e) {
-	            throw e;
-	        }
+	        
 	    }
 
 	    private void guardar() {
