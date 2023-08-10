@@ -10,17 +10,28 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.alura.jdbc.factory.ConnectionFactory;
+
 public class ControladorProducto {
 	public void modificar(String nombre, String descripcion, Integer id) {
 		// TODO
 	}
 
-	public void eliminar(Integer id) {
-		// TODO
+	public int eliminar(Integer id) throws SQLException {
+		ConnectionFactory connFactory = new ConnectionFactory();
+		Connection conn = connFactory.setConnection();
+		
+		Statement sentencia = conn.createStatement();
+		sentencia.execute("DELETE FROM productos WHERE id=" + id);
+					
+		conn.close();
+		return sentencia.getUpdateCount();
 	}
 
 	public List<Map<String, String>> listar() throws SQLException {
-		Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost/control_de_stock", "postgres", "43451105Abc");
+		
+		ConnectionFactory connFactory = new ConnectionFactory();
+		Connection conn = connFactory.setConnection();
 		
 		Statement sentencia = conn.createStatement();
 		
@@ -47,11 +58,26 @@ public class ControladorProducto {
 		}
 		
 		conn.close();
-		
 		return registros;
 	}
 
-    public void guardar(Object producto) {
-		// TODO
+    public void guardar(Map<String, String> producto) throws SQLException{
+    	ConnectionFactory connFactory = new ConnectionFactory();
+		Connection conn = connFactory.setConnection();
+		
+		Statement sentencia = conn.createStatement();
+		sentencia.execute("INSERT INTO productos(nombre, descripcion, cantidad) VALUES"
+				+ "('" + producto.get("Nombre") +"', "
+						+ "'" + producto.get("Descripcion") + "', "
+								+ producto.get("Cantidad") +")", sentencia.RETURN_GENERATED_KEYS);
+    	
+		ResultSet pk = sentencia.getGeneratedKeys();
+		
+		while(pk.next()) {
+			System.out.println("El id del producto nuevo es: " + pk.getInt("id"));
+		}
+		
+		conn.close();
+    	
 	}
 }
