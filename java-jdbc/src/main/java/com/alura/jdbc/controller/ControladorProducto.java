@@ -2,6 +2,7 @@ package com.alura.jdbc.controller;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -13,16 +14,36 @@ import java.util.Map;
 import com.alura.jdbc.factory.ConnectionFactory;
 
 public class ControladorProducto {
-	public void modificar(String nombre, String descripcion, Integer id) {
-		// TODO
+	public void modificar(String nombre, String descripcion, Integer cantidad, Integer id) throws SQLException {
+		
+		ConnectionFactory connFactory = new ConnectionFactory();
+		Connection conn = connFactory.setConnection();
+		
+		PreparedStatement sentencia = conn.prepareStatement(""
+				+ "UPDATE productos SET nombre = ?, descripcion = ?, cantidad = ? WHERE id = ?");
+		sentencia.setString(1, nombre);
+		sentencia.setString(2, descripcion);
+		sentencia.setInt(3, cantidad);
+		sentencia.setInt(4, id);
+		
+		sentencia.execute();
+		
+		conn.close();
+		
 	}
 
 	public int eliminar(Integer id) throws SQLException {
 		ConnectionFactory connFactory = new ConnectionFactory();
 		Connection conn = connFactory.setConnection();
 		
-		Statement sentencia = conn.createStatement();
-		sentencia.execute("DELETE FROM productos WHERE id=" + id);
+		// This is a wrong way to do it, because it will be open to sql inyection
+		//Statement sentencia = conn.createStatement();
+		//sentencia.execute("DELETE FROM productos WHERE id=" + id);
+		
+		// And this is the safe way
+		PreparedStatement sentencia = conn.prepareStatement("DELETE FROM productos WHERE id=?");
+		sentencia.setInt(1, id);
+		sentencia.execute();
 					
 		conn.close();
 		return sentencia.getUpdateCount();
@@ -65,11 +86,11 @@ public class ControladorProducto {
     	ConnectionFactory connFactory = new ConnectionFactory();
 		Connection conn = connFactory.setConnection();
 		
-		Statement sentencia = conn.createStatement();
-		sentencia.execute("INSERT INTO productos(nombre, descripcion, cantidad) VALUES"
-				+ "('" + producto.get("Nombre") +"', "
-						+ "'" + producto.get("Descripcion") + "', "
-								+ producto.get("Cantidad") +")", sentencia.RETURN_GENERATED_KEYS);
+		PreparedStatement sentencia = conn.prepareStatement("INSERT INTO productos(nombre, descripcion, cantidad) VALUES(?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
+		sentencia.setString(1, producto.get("Nombre"));
+		sentencia.setString(2, producto.get("Descripcion"));
+		sentencia.setInt(3, Integer.valueOf(producto.get("Cantidad")));
+		sentencia.execute();
     	
 		ResultSet pk = sentencia.getGeneratedKeys();
 		
@@ -80,4 +101,5 @@ public class ControladorProducto {
 		conn.close();
     	
 	}
+	
 }
