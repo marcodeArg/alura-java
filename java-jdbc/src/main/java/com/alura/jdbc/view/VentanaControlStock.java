@@ -20,6 +20,7 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import com.alura.jdbc.controller.*;
+import com.alura.jdbc.modelo.Productos;
 
 public class VentanaControlStock extends JFrame {
 
@@ -260,10 +261,7 @@ public class VentanaControlStock extends JFrame {
 	        }
 
 	        // TODO
-	        var producto = new HashMap<String, String>(); 	        
-	        producto.put("Nombre", textoNombre.getText());
-	        producto.put("Descripcion", textoDescripcion.getText());
-	        producto.put("Cantidad", String.valueOf(cantidadInt));
+	        Productos producto = new Productos(textoNombre.getText(), textoDescripcion.getText(), cantidadInt); 	        
 	        
 	        var categoria = comboCategoria.getSelectedItem();
 

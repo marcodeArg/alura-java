@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.alura.jdbc.factory.ConnectionFactory;
+import com.alura.jdbc.modelo.Productos;
 
 public class ControladorProducto {
 	public void modificar(String nombre, String descripcion, Integer cantidad, Integer id) throws SQLException {
@@ -99,10 +100,10 @@ public class ControladorProducto {
 		return registros;
 	}
 
-    public void guardar(Map<String, String> producto) throws SQLException{
-    	String nombre = producto.get("Nombre");
-    	String descripcion = producto.get("Descripcion");
-    	Integer cantidad = Integer.valueOf(producto.get("Cantidad"));
+    public void guardar(Productos producto) throws SQLException{
+    	String nombre = producto.getNombre();
+    	String descripcion = producto.getDescripcion();
+    	Integer cantidad = producto.getCantidad();
     	Integer cantidadMax = 50;
     	
     	ConnectionFactory connFactory = new ConnectionFactory();
@@ -117,7 +118,7 @@ public class ControladorProducto {
 				do {
 					Integer cantidadAGuardar = Math.min(cantidadMax, cantidad);
 					
-					guardarItems(nombre, descripcion, cantidadAGuardar, sentencia);
+					guardarItems(producto, sentencia);
 					
 					cantidad -=  cantidadMax;
 					
@@ -132,16 +133,17 @@ public class ControladorProducto {
     	
 	}
 
-	private void guardarItems(String nombre, String descripcion, Integer cantidad, PreparedStatement sentencia) throws SQLException {
-		sentencia.setString(1, nombre);
-		sentencia.setString(2, descripcion);
-		sentencia.setInt(3, cantidad);
+	private void guardarItems(Productos producto, PreparedStatement sentencia) throws SQLException {
+		sentencia.setString(1, producto.getNombre());
+		sentencia.setString(2, producto.getDescripcion());
+		sentencia.setInt(3, producto.getCantidad());
 		sentencia.execute();
     	
 		ResultSet pk = sentencia.getGeneratedKeys();
 		
 		while(pk.next()) {
-			System.out.println("El id del producto nuevo es: " + pk.getInt("id"));
+			producto.setId(pk.getInt("id"));
+			System.out.println("El producto nuevo es: " + producto);
 		}
 	}
 	
