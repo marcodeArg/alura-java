@@ -12,6 +12,13 @@ public class Productos {
 		this.descripcion = descripcion;
 		this.cantidad = cantidad;
 	}
+	
+	public Productos(Integer id, String nombre, String descripcion, Integer cantidad) {
+		this.id = id;
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+		this.cantidad = cantidad;
+	}
 
 
 	public String getNombre() {

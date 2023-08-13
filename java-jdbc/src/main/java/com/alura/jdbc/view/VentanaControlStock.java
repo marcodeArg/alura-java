@@ -191,11 +191,9 @@ public class VentanaControlStock extends JFrame {
 	                    String descripcion = (String) modelo.getValueAt(tabla.getSelectedRow(), 2);
 	                    Integer cantidad = (Integer) modelo.getValueAt(tabla.getSelectedRow(), 3);
 
-	                    try {
-							this.productoController.modificar(nombre, descripcion, cantidad, id);
-						} catch (SQLException e) {
-							throw new RuntimeException(e);
-						}
+
+						this.productoController.modificar(nombre, descripcion, cantidad, id);
+
 	                }, () -> JOptionPane.showMessageDialog(this, "Por favor, elije un item"));
 	    }
 
@@ -209,13 +207,8 @@ public class VentanaControlStock extends JFrame {
 	                .ifPresentOrElse(fila -> {
 	                    Integer id = Integer.valueOf(modelo.getValueAt(tabla.getSelectedRow(), 0).toString());
 
-	                    int cantidadEliminados;
-	                    try {
-							cantidadEliminados = this.productoController.eliminar(id);
-						} catch (SQLException e) {
-							throw new RuntimeException(e);
-						}
-
+	                    int cantidadEliminados = this.productoController.eliminar(id);
+	                    
 	                    modelo.removeRow(tabla.getSelectedRow());
 
 	                    JOptionPane.showMessageDialog(this, cantidadEliminados + " item eliminado con éxito!");
@@ -223,24 +216,9 @@ public class VentanaControlStock extends JFrame {
 	    }
 
 	    private void cargarTabla() {
+	    	var productos = this.productoController.listar();
 	    	
-	    	try {
-	    		var productos = this.productoController.listar();
-	    		
-	    		try {
-		            productos.forEach(producto -> modelo.addRow(new Object[] { producto.get("ID"), producto.get("Nombre"), producto.get("Descripcion"), producto.get("Cantidad")}));
-		            
-		        } catch (Exception e) {
-		            throw e;
-		        }
-	    		
-	    		
-	    		
-			} catch (SQLException e) {
-				throw new RuntimeException(e);
-			}
-	        
-
+	    	productos.forEach(producto -> modelo.addRow(new Object[] { producto.getId(), producto.getNombre(), producto.getDescripcion(), producto.getCantidad()}));	
 	        
 	    }
 
@@ -265,11 +243,9 @@ public class VentanaControlStock extends JFrame {
 	        
 	        var categoria = comboCategoria.getSelectedItem();
 
-	        try {
-				this.productoController.guardar(producto);
-			} catch (SQLException e) {
-				throw new RuntimeException(e);
-			}
+	        
+			this.productoController.guardar(producto);
+
 
 	        JOptionPane.showMessageDialog(this, "Registrado con éxito!");
 
