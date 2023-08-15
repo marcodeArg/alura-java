@@ -20,6 +20,8 @@
     <fullyQualifiedTypeName name="java.sql.Connection"/>
     <fullyQualifiedTypeName name="java.sql.DriverManager"/>
     <fullyQualifiedTypeName name="java.sql.SQLException"/>
-    <fullyQualifiedTypeName name="com.alura.jdbc.factory.ConnectionFactory"/>
     <fullyQualifiedTypeName name="java.util.HashMap"/>
+    <fullyQualifiedTypeName name="com.alura.jdbc.modelo.Productos"/>
+    <fullyQualifiedTypeName name="com.alura.jdbc.dao.ProductosDAO"/>
+    <fullyQualifiedTypeName name="com.alura.jdbc.factory.ConnectionFactory"/>
 </qualifiedTypeNameHistroy>

@@ -21,7 +21,7 @@ public class ProductosDAO {
 	public void guardar(Productos producto){
     	
 		try(conn) {
-			final PreparedStatement sentencia = conn.prepareStatement("INSERT INTO productos(nombre, descripcion, cantidad) VALUES(?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
+			final PreparedStatement sentencia = conn.prepareStatement("INSERT INTO productos(nombre, descripcion, cantidad, id_categoria) VALUES(?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
 			try (sentencia) {
 				guardarItems(producto, sentencia);
 			} 
@@ -35,6 +35,7 @@ public class ProductosDAO {
 		sentencia.setString(1, producto.getNombre());
 		sentencia.setString(2, producto.getDescripcion());
 		sentencia.setInt(3, producto.getCantidad());
+		sentencia.setInt(4, producto.getIDCategoria());
 		sentencia.execute();
     	
 		ResultSet pk = sentencia.getGeneratedKeys();
@@ -81,6 +82,34 @@ public class ProductosDAO {
 		return registros;
 	}
 
+	
+	public List<Productos> listar(Integer idCategoria) {
+		List<Productos> registros = new ArrayList<>();
+		
+		try(conn) {
+			final PreparedStatement sentencia = conn.prepareStatement("SELECT * FROM productos WHERE id_categoria = ?");
+			
+			try(sentencia) {
+				sentencia.setInt(1, idCategoria);
+				sentencia.execute();
+				
+				ResultSet filasRegistros = sentencia.getResultSet();
+
+				while(filasRegistros.next()) {
+					Integer id = filasRegistros.getInt("id");
+					String nombre = filasRegistros.getString("nombre");
+					String descripcion = filasRegistros.getString("descripcion");
+					Integer cantidad = filasRegistros.getInt("cantidad");
+					
+					registros.add(new Productos(id, nombre, descripcion, cantidad));
+				}
+			}
+		} catch(SQLException e) {
+			throw new RuntimeException(e);
+		}
+		
+		return registros;
+	}
 	
 	public int eliminar(Integer id) {
 		int updateCount;

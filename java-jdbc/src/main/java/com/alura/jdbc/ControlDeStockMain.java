@@ -21,6 +21,5 @@ public class ControlDeStockMain {
 		VentanaControlStock produtoCategoriaFrame = new VentanaControlStock();
 		produtoCategoriaFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
-	
-	
+		
 }
