@@ -20,6 +20,6 @@ public class ControladorCategoria {
 	}
 	
 	public List<Categorias> cargarReporte() {
-		return this.listar();
+		return this.dao.listarConProductos();
 	}
 }
