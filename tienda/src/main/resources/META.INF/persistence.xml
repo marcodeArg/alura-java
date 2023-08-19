@@ -13,6 +13,8 @@
 				<propertie name="javax.persistence.jdbc.user" value="sa"/>
 				<propertie name="javax.persistence.jdbc.password" value=""/>
 				
+				<propertie name="hibenate.show_sql" value="true"/>
+				<propertie name="hibenate.hbm2ddl.auto" value="update"/>
 				<propertie name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
 			</properties>
 		</persistence-unit>
