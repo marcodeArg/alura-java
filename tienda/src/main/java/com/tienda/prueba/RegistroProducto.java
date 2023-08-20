@@ -2,25 +2,35 @@ package com.tienda.prueba;
 
 import java.math.BigDecimal;
 
+import com.tienda.dao.CategoriasDao;
+import com.tienda.dao.ProductosDao;
+import com.tienda.modelo.Categorias;
 import com.tienda.modelo.Productos;
+import com.tienda.utils.JPAUtils;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+
 
 public class RegistroProducto {
 	public static void main(String[] args) {
+		Categorias celulares = new Categorias("Celular");
 		
-		Productos celular = new Productos();
-		celular.setNombre("Samsung");
-		celular.setDescripcion("Celular Samsung modelo A10");
-		celular.setPrecio(new BigDecimal(1000));
+		Productos celular = new Productos("Samsung",
+				"Celular Samsung modelo A10",
+				new BigDecimal(1000), celulares
+				);
+
 		
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("tienda");
-		EntityManager em = factory.createEntityManager();
+		EntityManager em = JPAUtils.getEntityManager();
+		
+		ProductosDao pd = new ProductosDao(em);
+		CategoriasDao cd = new CategoriasDao(em);
 		
 		em.getTransaction().begin();
-		em.persist(celular);
+		
+		cd.guardar(celulares);
+		pd.guardar(celular);
+
 		em.getTransaction().commit();
 		em.close();
 	}
