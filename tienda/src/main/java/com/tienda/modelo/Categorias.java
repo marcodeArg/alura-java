@@ -11,6 +11,10 @@ public class Categorias {
 	private int id;
 	private String nombre;
 	
+	public Categorias() {
+
+	}
+
 	public Categorias(String nombre) {
 		this.nombre = nombre;
 	}

@@ -13,6 +13,15 @@ public class CategoriasDao {
 	}
 	
 	public void guardar(Categorias categoria) {
-		em.persist(categoria);
+		this.em.persist(categoria);
+	}
+	
+	public void actualizar(Categorias categoria) {
+		this.em.merge(categoria);
+	}
+	
+	public void eliminar(Categorias categoria) {
+		categoria = this.em.merge(categoria);
+		this.em.remove(categoria);
 	}
 }

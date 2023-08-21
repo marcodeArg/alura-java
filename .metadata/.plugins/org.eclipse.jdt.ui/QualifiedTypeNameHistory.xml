@@ -26,4 +26,14 @@
     <fullyQualifiedTypeName name="com.alura.jdbc.controller.ControladorProducto"/>
     <fullyQualifiedTypeName name="com.alura.jdbc.modelo.Categorias"/>
     <fullyQualifiedTypeName name="com.alura.jdbc.modelo.Productos"/>
+    <fullyQualifiedTypeName name="javax.persistence.EntityManager"/>
+    <fullyQualifiedTypeName name="com.tienda.modelo.Productos"/>
+    <fullyQualifiedTypeName name="com.tienda.dao.ProductosDao"/>
+    <fullyQualifiedTypeName name="com.tienda.utils.JPAUtils"/>
+    <fullyQualifiedTypeName name="java.time.LocalDate"/>
+    <fullyQualifiedTypeName name="javax.persistence.Enumerated"/>
+    <fullyQualifiedTypeName name="javax.persistence.EnumType"/>
+    <fullyQualifiedTypeName name="javax.persistence.ManyToOne"/>
+    <fullyQualifiedTypeName name="com.tienda.modelo.Categorias"/>
+    <fullyQualifiedTypeName name="com.tienda.dao.CategoriasDao"/>
 </qualifiedTypeNameHistroy>
