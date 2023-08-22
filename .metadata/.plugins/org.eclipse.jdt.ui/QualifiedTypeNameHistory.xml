@@ -10,7 +10,6 @@
     <fullyQualifiedTypeName name="modelo.Cuenta"/>
     <fullyQualifiedTypeName name="modelo.CuentaCorriente"/>
     <fullyQualifiedTypeName name="com.alura.jdbc.controller.ControladorCategoria"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="com.alura.jdbc.view.VentanaControlStock"/>
     <fullyQualifiedTypeName name="javax.swing.JFrame"/>
@@ -36,4 +35,6 @@
     <fullyQualifiedTypeName name="javax.persistence.ManyToOne"/>
     <fullyQualifiedTypeName name="com.tienda.modelo.Categorias"/>
     <fullyQualifiedTypeName name="com.tienda.dao.CategoriasDao"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="java.math.BigDecimal"/>
 </qualifiedTypeNameHistroy>
